@@ -1,10 +1,16 @@
-import './App.css';
+import "./App.css";
+import Form from "./components/Form";
+import LogoTitle from "./components/LogoTitle";
+import { Grid } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      oi
-    </div>
+    <>
+      <Grid container spacing={3} justifyContent="center">
+        <LogoTitle />
+        <Form />
+      </Grid>
+    </>
   );
 }
 
