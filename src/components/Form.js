@@ -44,10 +44,42 @@ const TextFieldStyled = styled(TextField)`
   }
 `;
 
+const EmailIconStyled = styled(Email)`
+  fill: #202024;
+  width: 20px;
+  height: 20px;
+`;
+
+const LockIconStyled = styled(Lock)`
+  fill: #202024;
+  width: 20px;
+  height: 20px;
+`;
+
+const VisibilityIconStyled = styled(Visibility)`
+  fill: #8257e5;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+`;
+
+const VisibilityOffIconStyled = styled(VisibilityOff)`
+  fill: #6042a6;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+`;
+
 const PurpleTextStyled = styled(Typography)`
   color: #573c97;
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: -0.5px;
+`;
+
+const WhiteTextStyled = styled(Typography)`
+  color: #e1e1e6;
+  font-size: 14px;
   letter-spacing: -0.5px;
 `;
 
@@ -64,47 +96,6 @@ const EntrarStyled = styled(Button)`
   }
 `;
 
-const GitHubStyled = styled(Button)`
-  background-color: #29292e;
-  box-shadow: none;
-  font-weight: 700;
-  &:hover {
-    background-color: #7c62d4;
-    box-shadow: none;
-  }
-`;
-
-const EmailIconStyled = styled(Email)`
-  fill: #202024;
-  width: 20px;
-  height: 20px;
-`;
-
-const LockIconStyled = styled(Lock)`
-  fill: #202024;
-  width: 20px;
-  height: 20px;
-`;
-
-const VisibilityIconStyled = styled(Visibility)`
-  fill: #573c97;
-  width: 20px;
-  height: 20px;
-`;
-
-const GitHubIconStyled = styled(GitHub)`
-  fill: #7c62d4;
-  width: 24px;
-  height: 24px;
-  margin-right: 6px;
-`;
-
-const WhiteTextStyled = styled(Typography)`
-  color: #e1e1e6;
-  font-size: 14px;
-  letter-spacing: -0.5px;
-`;
-
 const DividerStyled = styled(Divider)`
   &:before,
   &:after {
@@ -114,10 +105,31 @@ const DividerStyled = styled(Divider)`
   }
 `;
 
+const GitHubIconStyled = styled(GitHub)`
+  fill: #7c62d4;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+`;
+
+const GitHubStyled = styled(Button)`
+  background-color: #29292e;
+  box-shadow: none;
+  font-weight: 700;
+  &:hover {
+    background-color: #7c62d4;
+    box-shadow: none;
+    svg {
+      fill: #fff;
+    }
+  }
+`;
+
 function Form() {
   const [disabledEnterButton, setDisabledEnterButton] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [visibility, setVisibility] = useState(true);
 
   const handleChangeEmail = (e) => {
     setEmail(e);
@@ -137,13 +149,18 @@ function Form() {
     }
   };
 
+  const handleVisibility = () => {
+    setVisibility(!visibility);
+  };
+
   return (
     <>
-      <Grid item lg={5} md={5}>
+      <Grid item lg={5} md={6} sm={12}>
         <BoxStyled>
           <TextFieldStyled
             placeholder="E-mail"
             type="email"
+            value={email}
             onChange={(e) => handleChangeEmail(e.target.value)}
             fullWidth
             InputProps={{
@@ -156,7 +173,8 @@ function Form() {
           />
           <TextFieldStyled
             placeholder="Senha"
-            type="password"
+            type={visibility ? "password" : "text"}
+            value={password}
             onChange={(e) => handleChangePassword(e.target.value)}
             fullWidth
             InputProps={{
@@ -167,7 +185,11 @@ function Form() {
               ),
               endAdornment: (
                 <InputAdornment position="end">
-                  <VisibilityIconStyled />
+                  {visibility ? (
+                    <VisibilityIconStyled onClick={handleVisibility} />
+                  ) : (
+                    <VisibilityOffIconStyled onClick={handleVisibility} />
+                  )}
                 </InputAdornment>
               ),
             }}
