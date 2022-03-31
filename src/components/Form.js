@@ -6,6 +6,7 @@ import {
   InputAdornment,
   Typography,
   Button,
+  Divider,
 } from "@mui/material";
 import styled from "styled-components";
 import {
@@ -19,7 +20,7 @@ import {
 const BoxStyled = styled(Box)`
   background-color: #202024;
   border-radius: 4px;
-  padding: 48px;
+  padding: 60px;
 `;
 
 const TextFieldStyled = styled(TextField)`
@@ -29,17 +30,22 @@ const TextFieldStyled = styled(TextField)`
   color: white;
 `;
 
-const TypographyStyled = styled(Typography)`
+const PurpleTextStyled = styled(Typography)`
   color: #573c97;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.5px;
 `;
 
-const ButtonStyled = styled(Button)`
+const EntrarStyled = styled(Button)`
   background-color: #8257e5;
   font-weight: 700;
-  margin-top: 24px;
+  margin: 24px 0;
+`;
+
+const GitHubStyled = styled(Button)`
+  background-color: #8257e5;
+  font-weight: 700;
 `;
 
 const EmailIconStyled = styled(Email)`
@@ -60,6 +66,21 @@ const VisibilityIconStyled = styled(Visibility)`
   height: 20px;
 `;
 
+const WhiteTextStyled = styled(Typography)`
+  color: #e1e1e6;
+  font-size: 14px;
+  letter-spacing: -0.5px;
+`;
+
+const DividerStyled = styled(Divider)`
+  &:before,
+  &:after {
+    border-top: thin solid #28272f;
+    margin: 28px 0;
+    height: 1px;
+  }
+`;
+
 function Form() {
   return (
     <>
@@ -72,7 +93,7 @@ function Form() {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <EmailIconStyled  />
+                  <EmailIconStyled />
                 </InputAdornment>
               ),
             }}
@@ -94,8 +115,29 @@ function Form() {
               ),
             }}
           />
-          <TypographyStyled>Esqueci minha senha</TypographyStyled>
-          <ButtonStyled variant="contained" size="large" fullWidth>Entrar</ButtonStyled>
+          <PurpleTextStyled>Esqueci minha senha</PurpleTextStyled>
+          <EntrarStyled variant="contained" size="large" fullWidth>
+            Entrar
+          </EntrarStyled>
+          <Grid container justifyContent="center" spacing={1}>
+            <Grid item>
+              <WhiteTextStyled>Não tem uma conta?</WhiteTextStyled>
+            </Grid>
+            <Grid item>
+              <PurpleTextStyled>Registre-se</PurpleTextStyled>
+            </Grid>
+          </Grid>
+          <DividerStyled> </DividerStyled>
+          <Grid container alignItems="center">
+            <Grid item lg={3}>
+              <WhiteTextStyled>Ou entre com</WhiteTextStyled>
+            </Grid>
+            <Grid item lg={9}>
+              <GitHubStyled variant="contained" size="large" fullWidth>
+                GitHub
+              </GitHubStyled>
+            </Grid>
+          </Grid>
         </BoxStyled>
       </Grid>
     </>

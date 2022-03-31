@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
 import styled from "styled-components";
+import Logo from "../img/logoRocketseat.png";
 
 const TypographyStyled = styled(Typography)`
     color: #e1e1e6;
@@ -12,7 +13,8 @@ const TypographyStyled = styled(Typography)`
 function LogoTitle() {
   return (
     <>
-      <Grid item lg={5} md={5}>
+      <Grid item lg={4} md={4}>
+        <img src={Logo} width="40%" style={{marginBottom: "48px"}} />
         <TypographyStyled>Faça seu login<br/>na plataforma</TypographyStyled>
       </Grid>
     </>
