@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Box,
@@ -27,7 +27,21 @@ const TextFieldStyled = styled(TextField)`
   background-color: #121214;
   border-radius: 4px;
   margin-bottom: 10px;
-  color: white;
+  & input {
+    color: #fff;
+  }
+  .MuiOutlinedInput-root {
+    fieldset {
+      border: none;
+    }
+  }
+  .MuiOutlinedInput-root.Mui-focused {
+    & > fieldset {
+      border-width: 2px;
+      border-style: solid;
+      border-color: #573c97;
+    }
+  }
 `;
 
 const PurpleTextStyled = styled(Typography)`
@@ -41,11 +55,23 @@ const EntrarStyled = styled(Button)`
   background-color: #8257e5;
   font-weight: 700;
   margin: 24px 0;
+  &:hover {
+    background-color: #a883ff;
+  }
+  &:disabled {
+    background-color: #41356b;
+    color: #ffffff59;
+  }
 `;
 
 const GitHubStyled = styled(Button)`
-  background-color: #8257e5;
+  background-color: #29292e;
+  box-shadow: none;
   font-weight: 700;
+  &:hover {
+    background-color: #7c62d4;
+    box-shadow: none;
+  }
 `;
 
 const EmailIconStyled = styled(Email)`
@@ -66,6 +92,13 @@ const VisibilityIconStyled = styled(Visibility)`
   height: 20px;
 `;
 
+const GitHubIconStyled = styled(GitHub)`
+  fill: #7c62d4;
+  width: 24px;
+  height: 24px;
+  margin-right: 6px;
+`;
+
 const WhiteTextStyled = styled(Typography)`
   color: #e1e1e6;
   font-size: 14px;
@@ -82,6 +115,28 @@ const DividerStyled = styled(Divider)`
 `;
 
 function Form() {
+  const [disabledEnterButton, setDisabledEnterButton] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleChangeEmail = (e) => {
+    setEmail(e);
+    if (password.length >= 4 && e !== "") {
+      setDisabledEnterButton(false);
+    } else {
+      setDisabledEnterButton(true);
+    }
+  };
+
+  const handleChangePassword = (e) => {
+    setPassword(e);
+    if (email !== "" && e.length >= 4) {
+      setDisabledEnterButton(false);
+    } else {
+      setDisabledEnterButton(true);
+    }
+  };
+
   return (
     <>
       <Grid item lg={5} md={5}>
@@ -89,6 +144,7 @@ function Form() {
           <TextFieldStyled
             placeholder="E-mail"
             type="email"
+            onChange={(e) => handleChangeEmail(e.target.value)}
             fullWidth
             InputProps={{
               startAdornment: (
@@ -101,6 +157,7 @@ function Form() {
           <TextFieldStyled
             placeholder="Senha"
             type="password"
+            onChange={(e) => handleChangePassword(e.target.value)}
             fullWidth
             InputProps={{
               startAdornment: (
@@ -116,7 +173,12 @@ function Form() {
             }}
           />
           <PurpleTextStyled>Esqueci minha senha</PurpleTextStyled>
-          <EntrarStyled variant="contained" size="large" fullWidth>
+          <EntrarStyled
+            variant="contained"
+            size="large"
+            fullWidth
+            disabled={disabledEnterButton}
+          >
             Entrar
           </EntrarStyled>
           <Grid container justifyContent="center" spacing={1}>
@@ -134,6 +196,7 @@ function Form() {
             </Grid>
             <Grid item lg={9}>
               <GitHubStyled variant="contained" size="large" fullWidth>
+                <GitHubIconStyled />
                 GitHub
               </GitHubStyled>
             </Grid>
