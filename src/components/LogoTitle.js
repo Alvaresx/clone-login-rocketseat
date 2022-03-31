@@ -10,11 +10,16 @@ const TypographyStyled = styled(Typography)`
     letter-spacing: -2px;
 `;
 
+const ImgStyled = styled.img`
+    width: 200px;
+    margin-bottom: 48px;
+`;
+
 function LogoTitle() {
   return (
     <>
-      <Grid item lg={4} md={6} sm={12}>
-        <img src={Logo} width="40%" style={{marginBottom: "48px"}} />
+      <Grid item lg={4} md={6} sm={11} xs={12}>
+        <ImgStyled src={Logo} />
         <TypographyStyled>Faça seu login<br/>na plataforma</TypographyStyled>
       </Grid>
     </>

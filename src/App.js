@@ -6,7 +6,18 @@ import { Grid } from "@mui/material";
 function App() {
   return (
     <>
-      <Grid container spacing={3} justifyContent="center" alignItems="center" style={{height: "100vh"}}>
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        alignItems="center"
+        style={{
+          height: "100vh",
+          marginTop: 0,
+          padding: "48px",
+          overflow: "auto",
+        }}
+      >
         <LogoTitle />
         <Form />
       </Grid>

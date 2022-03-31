@@ -155,7 +155,7 @@ function Form() {
 
   return (
     <>
-      <Grid item lg={5} md={6} sm={12}>
+      <Grid item lg={5} md={6} sm={11} xs={12}>
         <BoxStyled>
           <TextFieldStyled
             placeholder="E-mail"
@@ -213,10 +213,10 @@ function Form() {
           </Grid>
           <DividerStyled> </DividerStyled>
           <Grid container alignItems="center">
-            <Grid item lg={3}>
+            <Grid item lg={3} md={4} sm={4} xs={4}>
               <WhiteTextStyled>Ou entre com</WhiteTextStyled>
             </Grid>
-            <Grid item lg={9}>
+            <Grid item lg={9} md={8} sm={8} xs={8}>
               <GitHubStyled variant="contained" size="large" fullWidth>
                 <GitHubIconStyled />
                 GitHub
