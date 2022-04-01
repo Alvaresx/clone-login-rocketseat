@@ -22,7 +22,7 @@ O objetivo do projeto foi criar um **clone** da tela de **login da Rocketseat**.
 
 ### 🔎 Outras informações
 
-O projeto foi criado pensando na **responsividade**, possibilitando ao usuário a utilização do formulário partindo de qualquer **dispositivo**! 📱💻
+O projeto foi criado pensando na **responsividade**, possibilitando ao usuário a utilização da aplicação partindo de qualquer **dispositivo**! 📱💻
 
 Para executar o projeto, execute o comando `npm start`, acessando em http://localhost:3000 .
 
