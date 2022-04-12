@@ -1,129 +1,6 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Box,
-  TextField,
-  InputAdornment,
-  Typography,
-  Button,
-  Divider,
-} from "@mui/material";
-import styled from "styled-components";
-import {
-  Email,
-  Lock,
-  Visibility,
-  VisibilityOff,
-  GitHub,
-} from "@mui/icons-material";
-
-const BoxStyled = styled(Box)`
-  background-color: #202024;
-  border-radius: 4px;
-  padding: 60px;
-`;
-
-const TextFieldStyled = styled(TextField)`
-  background-color: #121214;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  & input {
-    color: #fff;
-  }
-  .MuiOutlinedInput-root {
-    fieldset {
-      border: none;
-    }
-  }
-  .MuiOutlinedInput-root.Mui-focused {
-    & > fieldset {
-      border-width: 2px;
-      border-style: solid;
-      border-color: #573c97;
-    }
-  }
-`;
-
-const EmailIconStyled = styled(Email)`
-  fill: #202024;
-  width: 20px;
-  height: 20px;
-`;
-
-const LockIconStyled = styled(Lock)`
-  fill: #202024;
-  width: 20px;
-  height: 20px;
-`;
-
-const VisibilityIconStyled = styled(Visibility)`
-  fill: #8257e5;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
-
-const VisibilityOffIconStyled = styled(VisibilityOff)`
-  fill: #6042a6;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-`;
-
-const PurpleTextStyled = styled(Typography)`
-  color: #573c97;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-`;
-
-const WhiteTextStyled = styled(Typography)`
-  color: #e1e1e6;
-  font-size: 14px;
-  letter-spacing: -0.5px;
-`;
-
-const EntrarStyled = styled(Button)`
-  background-color: #8257e5;
-  font-weight: 700;
-  margin: 24px 0;
-  &:hover {
-    background-color: #a883ff;
-  }
-  &:disabled {
-    background-color: #41356b;
-    color: #ffffff59;
-  }
-`;
-
-const DividerStyled = styled(Divider)`
-  &:before,
-  &:after {
-    border-top: thin solid #28272f;
-    margin: 28px 0;
-    height: 1px;
-  }
-`;
-
-const GitHubIconStyled = styled(GitHub)`
-  fill: #7c62d4;
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-`;
-
-const GitHubStyled = styled(Button)`
-  background-color: #29292e;
-  box-shadow: none;
-  font-weight: 700;
-  &:hover {
-    background-color: #7c62d4;
-    box-shadow: none;
-    svg {
-      fill: #fff;
-    }
-  }
-`;
+import { Grid, InputAdornment } from "@mui/material";
+import * as S from "../styles/style";
 
 function Form() {
   const [disabledEnterButton, setDisabledEnterButton] = useState(true);
@@ -156,8 +33,8 @@ function Form() {
   return (
     <>
       <Grid item lg={5} md={6} sm={11} xs={12}>
-        <BoxStyled>
-          <TextFieldStyled
+        <S.BoxStyled>
+          <S.TextFieldStyled
             placeholder="E-mail"
             type="email"
             value={email}
@@ -166,12 +43,12 @@ function Form() {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <EmailIconStyled />
+                  <S.EmailIconStyled />
                 </InputAdornment>
               ),
             }}
           />
-          <TextFieldStyled
+          <S.TextFieldStyled
             placeholder="Senha"
             type={visibility ? "password" : "text"}
             value={password}
@@ -180,50 +57,50 @@ function Form() {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <LockIconStyled />
+                  <S.LockIconStyled />
                 </InputAdornment>
               ),
               endAdornment: (
                 <InputAdornment position="end">
                   {visibility ? (
-                    <VisibilityIconStyled onClick={handleVisibility} />
+                    <S.VisibilityIconStyled onClick={handleVisibility} />
                   ) : (
-                    <VisibilityOffIconStyled onClick={handleVisibility} />
+                    <S.VisibilityOffIconStyled onClick={handleVisibility} />
                   )}
                 </InputAdornment>
               ),
             }}
           />
-          <PurpleTextStyled>Esqueci minha senha</PurpleTextStyled>
-          <EntrarStyled
+          <S.PurpleTextStyled>Esqueci minha senha</S.PurpleTextStyled>
+          <S.EntrarStyled
             variant="contained"
             size="large"
             fullWidth
             disabled={disabledEnterButton}
           >
             Entrar
-          </EntrarStyled>
+          </S.EntrarStyled>
           <Grid container justifyContent="center" spacing={1}>
             <Grid item>
-              <WhiteTextStyled>Não tem uma conta?</WhiteTextStyled>
+              <S.WhiteTextStyled>Não tem uma conta?</S.WhiteTextStyled>
             </Grid>
             <Grid item>
-              <PurpleTextStyled>Registre-se</PurpleTextStyled>
+              <S.PurpleTextStyled>Registre-se</S.PurpleTextStyled>
             </Grid>
           </Grid>
-          <DividerStyled> </DividerStyled>
+          <S.DividerStyled> </S.DividerStyled>
           <Grid container alignItems="center">
             <Grid item lg={3} md={4} sm={4} xs={4}>
-              <WhiteTextStyled>Ou entre com</WhiteTextStyled>
+              <S.WhiteTextStyled>Ou entre com</S.WhiteTextStyled>
             </Grid>
             <Grid item lg={9} md={8} sm={8} xs={8}>
-              <GitHubStyled variant="contained" size="large" fullWidth>
-                <GitHubIconStyled />
+              <S.GitHubStyled variant="contained" size="large" fullWidth>
+                <S.GitHubIconStyled />
                 GitHub
-              </GitHubStyled>
+              </S.GitHubStyled>
             </Grid>
           </Grid>
-        </BoxStyled>
+        </S.BoxStyled>
       </Grid>
     </>
   );
